@@ -11,8 +11,12 @@ Intercept calls sent from Razer enabled games and sends them over to Steelseries
 * Copy *RzChromaSDK64.dll* to Windows/System32.
 * Copy *razergamesense.lsp* file to the hax0rbindings folder (%ProgramData%\SteelSeries\SteelSeries Engine 3\hax0rBindings)
 
+## Concerns
 ### Why System32?
 Razer enabled games will use the dll in the System32 folder first, this allows us to hijack the calls and divert them. 
+
+### Doesn't this breach the ToS for Overwatch and such.
+While i can't offer any guarantees, it shouldn't. It never directly interacts with either the game, or the memory space occupied by the game. In general, most games will fire the colors in a fire-and-forget manner, so there is never any direct interaction between this and the game.
 
 ## Remove/Disable
 If you wish to uninstall/disable, just remove or rename the *RzChromaSDK64.dll* file.
@@ -31,4 +35,7 @@ The key layout can also be override by creating a file called *RazerInterceptorK
 You can use [the USB HID Usage Tables - chapter 10](http://www.usb.org/developers/hidpage/Hut1_12v2.pdf) for reference
 
 ### Available settings
-* emitlogs (default: false). Emit logs to the user profile directory. **WARNING** This will tank your FPS.
+* emitlogs (default: false). Emit logs to the user profile directory. **WARNING** This will tank your FPS due to disk IO.
+
+## Additional credits
+The idea and base code comes from Nicholas Thomsons [blog post](https://medium.com/@RedbackThomson/chroma-overwatch-e41aab4c4404). While he uses it in a different manner, the main hijack part was his idea. He also discusses methods to hijack and security in more detail.

@@ -55,7 +55,6 @@
     <Compile Include="Gamesense\GameEventData.cs" />
     <Compile Include="Gamesense\GameMetaData.cs" />
     <Compile Include="Gamesense\GamesenseClient.cs" />
-    <Compile Include="HidKeys.cs" />
     <Compile Include="HttpTool.cs" />
     <Compile Include="KeyboardLayout.cs" />
     <Compile Include="RazerHooks.cs" />

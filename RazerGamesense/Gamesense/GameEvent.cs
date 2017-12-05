@@ -12,6 +12,6 @@
 		public string Event { get; set; }
 
 		[DataMember(Name = "data")]
-		public GameEventDataInt DataInt { get; set; }
+		public GameEventData Data { get; set; }
 	}
 }

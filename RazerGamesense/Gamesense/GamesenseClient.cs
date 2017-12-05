@@ -2,8 +2,6 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Threading.Tasks;
-	using System.Linq;
 	using Razer;
 
 	public class GamesenseClient
@@ -46,58 +44,27 @@
 			{
 				Game = GameMetaData.GetRgsRegistration().GameName,
 				Event = "COLORPUSH",
-				DataInt = new GameEventDataInt()
+				Data = new GameEventData()
 			};
 
 			for (int i = 0; i < KeyboardLayout.HidKeyboardKeys.Count; i++)
 			{
-				if (KeyboardLayout.HidKeyboardKeys[i] == 0)
+				if (keyIdLayout[i] == 0)
 				{
-					gEvent.DataInt.Colors.Add(new List<int> {255, 255, 255});
+					gEvent.Data.Colors.Add(new List<int> {255, 255, 255});
 					continue;
 				}
 
 				var c = colList[i];
-				gEvent.DataInt.Colors.Add(new List<int> { c.Red, c.Green, c.Blue });
+				gEvent.Data.Colors.Add(new List<int> { c.Red, c.Green, c.Blue });
 			}
 
-			gEvent.DataInt.Hids = KeyboardLayout.HidKeyboardKeys;
-
+			gEvent.Data.Hids = keyIdLayout;
 			Util.WriteLog("Sending COLORPUSH event:");
 			Util.WriteLog(http.Serializer.Serialize(gEvent));
 			Util.WriteLog(" ");
 
 			http.PostAsync("game_event", gEvent).ConfigureAwait(true);
-		}
-
-		static uint[] OrderByKeyCode(uint[] uintColorArray)
-		{
-			var outputDict = new Dictionary<int, uint>();
-			Keyboard.RZKEY currentrzkey = Keyboard.RZKEY.A;
-			try
-			{
-				for (int i = 0; i < uintColorArray.Length; i++)
-				{
-					currentrzkey = (Keyboard.RZKEY)i;
-					Enum.TryParse(currentrzkey.ToString(), out HidKeys hidkey);
-					int index = (int)hidkey;
-					if (outputDict.ContainsKey(index) == false)
-					{
-						outputDict.Add(index, uintColorArray[i]);
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				Util.WriteLog("Exception while processing rzkey: " + currentrzkey);
-				Util.WriteLog(ex.Message);
-				Util.WriteLog(ex.StackTrace);
-			}
-
-			return outputDict
-				.OrderBy(val => val.Key)
-				.Select(val => val.Value)
-				.ToArray();
 		}
 	}
 }
