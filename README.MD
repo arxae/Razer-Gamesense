@@ -4,7 +4,11 @@ Intercept calls sent from Razer enabled games and sends them over to Steelseries
 
 ## Requirements
 * Steelseries Engine installed
-* Apex M800. Only keyboard to provide separate per-key illumination
+* Per key RGB keyboard. Currently:
+	* Apex M800
+	* M750
+
+Currently, only the Apex M800 keyboard is support as i have no access to a M750
 
 ## Installation
 * Build project
