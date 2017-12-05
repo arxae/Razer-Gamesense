@@ -28,5 +28,7 @@ If a file called *RazerInterceptor.cfg* is pressent in the profile directory (so
 
 The key layout can also be override by creating a file called *RazerInterceptorKeyLayout.cfg* file in your profile directory. This file contains HID codes that refer to the keys on your keyboard. Razer sends a list of colors, and this is matched to this list. So color 1 will match the ID entered on line 1. Only a single value per line. *NOTE*: SSE interprets the results as US english keyboard layout, but windows *does* translates it to the correct keyboard settings.
 
+You can use [the USB HID Usage Tables - chapter 10](http://www.usb.org/developers/hidpage/Hut1_12v2.pdf) for reference
+
 ### Available settings
 * emitlogs (default: false). Emit logs to the user profile directory. **WARNING** This will tank your FPS.
