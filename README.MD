@@ -7,6 +7,7 @@ Intercept calls sent from Razer enabled games and sends them over to Steelseries
 * Per key RGB keyboard. Currently:
 	* Apex M800
 	* M750
+* Uses some C#7 features, so you need VS2017 if building yourself
 
 Currently, only the Apex M800 keyboard is support as i have no access to a M750
 
